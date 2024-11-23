@@ -1,0 +1,28 @@
+/* Make sure the body takes the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the container fills the entire height of the viewport */
+  }
+  
+  footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    background-color: #333;
+    color: white;
+    padding: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    margin: 5px 0;
+  }
+  

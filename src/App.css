@@ -1,0 +1,166 @@
+/* src/styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #ff5722;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.restaurant-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.restaurant-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  text-align: center;
+  width: 250px;
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.restaurant-card h3 {
+  color: #ff5722;
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.restaurant-card p {
+  color: #666;
+  font-size: 0.9em;
+}
+
+button {
+  background-color: #ff5722;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e64a19;
+}
+
+.cart {
+  padding: 20px;
+  text-align: center;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.checkout-container {
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.checkout-container h2, .checkout-container h3 {
+  color: #ff5722;
+}
+
+.checkout-container label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.checkout-container input,
+.checkout-container textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.checkout-container button {
+  width: 100%;
+  background-color: #4caf50;
+}
+
+.checkout-container button:hover {
+  background-color: #388e3c;
+}
+
+/* src/App.css */
+
+/* Restaurant card image styling */
+/* src/App.css */
+
+/* .restaurant-card img {
+  width: 150px !important;
+  height: 100px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+}
+
+.menu-item img {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+}
+/* Horizontal layout for menu items */
+/* .menu-items {
+  display: flex;
+  flex-direction: row; /* Arrange items in a row */
+  /*  */
+
+/* Restrict the image size */
+/* src/App.css */
+
+/* Restrict the image size for small images */
+.small-image {
+  width: 150px; /* Set a fixed width */
+  height: 100px; /* Set a fixed height */
+  object-fit: cover; /* Ensure the image fills the area without distortion */
+  border-radius: 8px;
+}
+
+
+
