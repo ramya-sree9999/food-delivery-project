@@ -1,20 +1,24 @@
 // src/App.js
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
 import RestaurantList from './Components/RestaurantList';
 import Menu from './Components/Menu';
 import Cart from './Components/Cart';
 import Checkout from './Components/Checkout';
+import Register from './Components/Register';
+import Login from './Components/Login';
 
 function App() {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const addItemToCart = (item) => {
     setCart((prevCart) => {
-      const itemExists = prevCart.find(cartItem => cartItem.id === item.id);
+      const itemExists = prevCart.find((cartItem) => cartItem.id === item.id);
       if (itemExists) {
-        return prevCart.map(cartItem =>
+        return prevCart.map((cartItem) =>
           cartItem.id === item.id
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
@@ -26,7 +30,7 @@ function App() {
   };
 
   const removeItemFromCart = (item) => {
-    setCart((prevCart) => prevCart.filter(cartItem => cartItem.id !== item.id));
+    setCart((prevCart) => prevCart.filter((cartItem) => cartItem.id !== item.id));
   };
 
   // Function to clear the cart
@@ -42,15 +46,35 @@ function App() {
   return (
     <Router>
       <nav>
-        <Link to="/">Home</Link> | <Link to="/restaurantList">Restaurant List</Link> | <Link to="/cart">Cart</Link> | <Link to="/checkout">Checkout</Link>
+        {!isLoggedIn && (
+          <>
+            <Link to="/register">Register</Link> | <Link to="/login">Login</Link> |{' '}
+          </>
+        )}
+        <Link to="/">Home</Link> | <Link to="/restaurantList">Restaurant List</Link> |{' '}
+        <Link to="/cart">Cart</Link> | <Link to="/checkout">Checkout</Link>
       </nav>
 
       <Routes>
         <Route path="/" element={<h1>Welcome to Swiggy</h1>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/restaurantList" element={<RestaurantList />} />
         <Route path="/menu/:restaurantId" element={<Menu addItemToCart={addItemToCart} />} />
-        <Route path="/cart" element={<Cart cart={cart} total={total} onRemoveItem={removeItemFromCart} />} />
-        <Route path="/checkout" element={<Checkout cart={cart} total={total} onClearCart={onClearCart} />} />
+        <Route
+          path="/cart"
+          element={
+            cart.length > 0 ? (
+              <Cart cart={cart} total={total} onRemoveItem={removeItemFromCart} />
+            ) : (
+              <h2>Your cart is empty!</h2>
+            )
+          }
+        />
+        <Route
+          path="/checkout"
+          element={<Checkout cart={cart} total={total} onClearCart={onClearCart} />}
+        />
       </Routes>
     </Router>
   );

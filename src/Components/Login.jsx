@@ -1,37 +1,40 @@
 // Login.js
 import React, { useState } from 'react';
-import './App.css';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    alert('Login Successful!');
+    console.log('User logged in:', { username, password });
+    navigate('/'); // Redirect to Home (RestaurantList) after login
   };
 
   return (
     <div>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={credentials.email}
-          onChange={handleChange}
-        />
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          value={credentials.password}
-          onChange={handleChange}
-        />
+      <form onSubmit={handleLogin}>
+        <div>
+          <label>Username:</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
         <button type="submit">Login</button>
       </form>
     </div>
